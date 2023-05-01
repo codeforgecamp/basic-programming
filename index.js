@@ -1,31 +1,43 @@
-// Define functions to convert temperature units
-function convertCelsiusToFahrenheit(celsius) {
-	return (celsius * 9) / 5 + 32;
+// Create an array to store the tasks
+const tasks = [];
+
+// Function to add a task to the array
+function addTask(task) {
+	tasks.push(task);
 }
 
-function convertFahrenheitToCelsius(fahrenheit) {
-	return ((fahrenheit - 32) * 5) / 9;
+// Function to remove a task from the array
+function removeTask(task) {
+	const index = tasks.indexOf(task);
+	if (index > -1) {
+		tasks.splice(index, 1);
+	}
 }
 
-// Prompt user for temperature input
-const inputTemp = prompt("Enter temperature value:");
-const inputUnit = prompt("Enter temperature unit (C or F):").toUpperCase();
-
-// Convert temperature based on unit
-let outputTemp, outputUnit;
-if (inputUnit === "C") {
-	outputTemp = convertCelsiusToFahrenheit(inputTemp);
-	outputUnit = "F";
-} else if (inputUnit === "F") {
-	outputTemp = convertFahrenheitToCelsius(inputTemp);
-	outputUnit = "C";
-} else {
-	console.log("Invalid temperature unit!");
-	// Exit program if input unit is invalid
-	process.exit(1);
+// Function to display the tasks in the array
+function displayTasks() {
+	if (tasks.length === 0) {
+		console.log("There are no tasks to display.");
+	} else {
+		console.log("Tasks:");
+		tasks.forEach((task, index) => {
+			console.log(`${index + 1}. ${task}`);
+		});
+	}
 }
 
-// Display conversion result
-console.log(
-	`${inputTemp}°${inputUnit} = ${outputTemp.toFixed(2)}°${outputUnit}`
-);
+// Add some tasks to the array
+addTask("Make a list of exhausted groceries for restocking");
+addTask("Drive to the mall");
+addTask("Make a quick stop at the laundromart");
+addTask("Attempt CodeForge assignment");
+addTask("Attend Codeforge meeting by 8pm");
+
+// Display the tasks
+displayTasks();
+
+// Remove a task from the array
+removeTask("Make a list of exhausted groceries for restocking");
+
+// Display the tasks again
+displayTasks();
