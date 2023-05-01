@@ -1,14 +1,31 @@
-for (var i = 1; i <= 100; i++) {
-	var isMultipleOf3 = i % 3 === 0;
-	var isMultipleOf5 = i % 5 === 0;
-
-	if (isMultipleOf3 && isMultipleOf5) {
-		console.log("FizzBuzz");
-	} else if (isMultipleOf3) {
-		console.log("Fizz");
-	} else if (isMultipleOf5) {
-		console.log("Buzz");
-	} else {
-		console.log(i);
-	}
+// Define functions to convert temperature units
+function convertCelsiusToFahrenheit(celsius) {
+	return (celsius * 9) / 5 + 32;
 }
+
+function convertFahrenheitToCelsius(fahrenheit) {
+	return ((fahrenheit - 32) * 5) / 9;
+}
+
+// Prompt user for temperature input
+const inputTemp = prompt("Enter temperature value:");
+const inputUnit = prompt("Enter temperature unit (C or F):").toUpperCase();
+
+// Convert temperature based on unit
+let outputTemp, outputUnit;
+if (inputUnit === "C") {
+	outputTemp = convertCelsiusToFahrenheit(inputTemp);
+	outputUnit = "F";
+} else if (inputUnit === "F") {
+	outputTemp = convertFahrenheitToCelsius(inputTemp);
+	outputUnit = "C";
+} else {
+	console.log("Invalid temperature unit!");
+	// Exit program if input unit is invalid
+	process.exit(1);
+}
+
+// Display conversion result
+console.log(
+	`${inputTemp}°${inputUnit} = ${outputTemp.toFixed(2)}°${outputUnit}`
+);
