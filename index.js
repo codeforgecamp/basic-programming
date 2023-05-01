@@ -1,43 +1,20 @@
-// Create an array to store the tasks
-const tasks = [];
+function isPalindrome(word) {
+	// Remove spaces and punctuation from the input string
+	word = word.replace(/[^0-9a-z]/gi, "").toLowerCase();
 
-// Function to add a task to the array
-function addTask(task) {
-	tasks.push(task);
-}
-
-// Function to remove a task from the array
-function removeTask(task) {
-	const index = tasks.indexOf(task);
-	if (index > -1) {
-		tasks.splice(index, 1);
+	// Loop through the string and check if the characters match
+	for (let i = 0; i < Math.floor(word.length / 2); i++) {
+		const leftChar = word[i];
+		const rightChar = word[word.length - 1 - i];
+		if (leftChar !== rightChar) {
+			return false;
+		}
 	}
+	return true;
 }
 
-// Function to display the tasks in the array
-function displayTasks() {
-	if (tasks.length === 0) {
-		console.log("There are no tasks to display.");
-	} else {
-		console.log("Tasks:");
-		tasks.forEach((task, index) => {
-			console.log(`${index + 1}. ${task}`);
-		});
-	}
-}
-
-// Add some tasks to the array
-addTask("Make a list of exhausted groceries for restocking");
-addTask("Drive to the mall");
-addTask("Make a quick stop at the laundromart");
-addTask("Attempt CodeForge assignment");
-addTask("Attend Codeforge meeting by 8pm");
-
-// Display the tasks
-displayTasks();
-
-// Remove a task from the array
-removeTask("Make a list of exhausted groceries for restocking");
-
-// Display the tasks again
-displayTasks();
+console.log(isPalindrome("madam"));
+console.log(isPalindrome("hello"));
+console.log(isPalindrome("Rats live on in bunkers"));
+console.log(isPalindrome("Step on no pets"));
+console.log(isPalindrome("Mr. Owl ate my metal worm"));
