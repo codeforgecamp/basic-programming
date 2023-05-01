@@ -1,51 +1,14 @@
-// Defining a function for each mathematical operation
-function add(num1, num2) {
-	return num1 + num2;
-}
+for (var i = 1; i <= 100; i++) {
+	var isMultipleOf3 = i % 3 === 0;
+	var isMultipleOf5 = i % 5 === 0;
 
-function subtract(num1, num2) {
-	return num1 - num2;
-}
-
-function multiply(num1, num2) {
-	return num1 * num2;
-}
-
-function divide(num1, num2) {
-	return num1 / num2;
-}
-
-// The calculator function
-function calculator() {
-	// Prompt user for input
-	const num1 = parseFloat(prompt("Enter the first number:"));
-	const num2 = parseFloat(prompt("Enter the second number:"));
-	const operator = prompt("Enter the operation (+, -, *, /):");
-
-	let result;
-
-	// Perform calculation based on the chosen operator
-	switch (operator) {
-		case "+":
-			result = add(num1, num2);
-			break;
-		case "-":
-			result = subtract(num1, num2);
-			break;
-		case "*":
-			result = multiply(num1, num2);
-			break;
-		case "/":
-			result = divide(num1, num2);
-			break;
-		default:
-			console.log("Invalid operator.");
-			return;
+	if (isMultipleOf3 && isMultipleOf5) {
+		console.log("FizzBuzz");
+	} else if (isMultipleOf3) {
+		console.log("Fizz");
+	} else if (isMultipleOf5) {
+		console.log("Buzz");
+	} else {
+		console.log(i);
 	}
-
-	// Print the result
-	console.log(`${num1} ${operator} ${num2} = ${result}`);
 }
-
-// Calling the calculator function to run the program
-calculator();
